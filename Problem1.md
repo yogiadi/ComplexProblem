@@ -5,7 +5,7 @@
 Decommissioning of old datawarehouse with a new datawarehouse, data model and a separate database instance. Datawarehouse ETL system consists of file upload on daily basis from different source systems. New datawarehouse has been set up in parallel or soft live and once data is signed off , all the data from existing datawarehouse will be migrated to new datawarehouse including transformations as per new data model.  
 For this migration , we need to execute below steps:-
 
-1) Extract terabytes of data with billion records from old database instance 
+1. Extract terabytes of data with billion records from old database instance 
 
 2) Apply transformation.
 
