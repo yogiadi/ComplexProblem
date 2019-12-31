@@ -47,6 +47,7 @@ New Approach
 ![New Approach](NewApproach.JPG)
 
 Below were the steps we took to tackle above problems :-
+
 1) Target tables in new datawarehouse were partitioned for 7 days. So rather than extracting all data into stage and then loading it into target tables we will be pulling data for only 7 days for one thread. 
 
 2) Use of dblink was the quickest option as it didnot involve any other servers or staging area. However it was running inefficient execution plans . So we created a new table in old datawarehouse which was paritioned on date with interval range of 7 days and had primary keys for source tables. 
