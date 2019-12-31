@@ -5,7 +5,7 @@
 Decommissioning of old datawarehouse with a new datawarehouse, data model and a separate database instance. Datawarehouse ETL system consists of file upload on daily basis from different source systems. New datawarehouse has been set up in parallel or soft live and once data is signed off , all the data from existing datawarehouse will be migrated to new datawarehouse including transformations as per new data model.  
 For this migration , we need to execute below steps:-
 
-1. Extract terabytes of data with billion records from old database instance 
+1) Extract terabytes of data with billion records from old database instance 
 
 2) Apply transformation.
 
@@ -48,7 +48,9 @@ New Approach
 
 Below were the steps we took to tackle above problems :-
 1) Target tables in new datawarehouse were partitioned for 7 days. So rather than extracting all data into stage and then loading it into target tables we will be pulling data for only 7 days for one thread. 
+
 2) Use of dblink was the quickest option as it didnot involve any other servers or staging area. However it was running inefficient execution plans . So we created a new table in old datawarehouse which was paritioned on date with interval range of 7 days and had primary keys for source tables. 
+
 For example :-
 
 Suppose structure of old table is 
@@ -80,5 +82,7 @@ While pulling data we created a join between chunk_range and Source_table and it
 ## Result
 
 1) Reducing time from several days to 24 hours to load terabytes of data without using any big data frameworks.
+
 2) Saving additional space required for staging area. 
+
 3) Saving temp space usage used in Oracle. 
