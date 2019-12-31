@@ -60,3 +60,7 @@ While pulling data we created a join between chunk_range and Source_table and it
 7) Use of Python for multithreading which runs 3-4 threads at a time with each thread pulling data for 7 days. 
 
 ## Result
+
+1) Reducing time from several days to 24 hours to load terabytes of data without using any big data frameworks.
+2) Saving additional space required for staging area. 
+3) Saving temp space usage used in Oracle. 
