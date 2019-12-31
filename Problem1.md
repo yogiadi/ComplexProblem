@@ -4,9 +4,13 @@
 
 Decommissioning of old datawarehouse with a new datawarehouse, data model and a separate database instance. Datawarehouse ETL system consists of file upload on daily basis from different source systems. New datawarehouse has been set up in parallel or soft live and once data is signed off , all the data from existing datawarehouse will be migrated to new datawarehouse including transformations as per new data model.  
 For this migration , we need to execute below steps:-
+
 1) Extract terabytes of data with billion records from old database instance 
+
 2) Apply transformation.
+
 3) Resolve dimension keys.
+
 4) Log Error if any. 
 
 ## Task
@@ -14,14 +18,23 @@ For this migration , we need to execute below steps:-
 Below constraints/challenges we faced during this history load:-
 
 1) Must be done during and within one weekend i.e. within 24-36 hours.
+
 2) Non-availability of any big data technologies such as hadoop, multiple clusters etc. 
+
 3) No ETL tools such as Informatica, Vertica available . 
+
 4) Transport tablespace option in Oracle not available as data was distributed in multiple tablespaces. 
+
 5) Temporary allocating terabytes of space to staging area to apply transformations.
+
 6) Applying dblink resulted in ineffcient execution plans.
-7) Queries failing sometimes due to lack of TEMP space when going with bigger chunk of data. 
+
+7) Queries failing sometimes due to lack of TEMP space when going with bigger chunk of data.
+
 8) Tried to increase insert speed by disabling indexes but time taken to rebuild indexes will run for several hours. 
+
 9) Huge number of joins both at old datawarehouse to convert into new data model and for resolving dimension keys.
+
 10) We did a sample run of three months and it took approx 24 hours to do a complete load end-to-end. 
 
 By above calculation , not only would we be not able to complete this during a weekend but this load would have run for several days as we had data from 2007 to 2019.
