@@ -28,7 +28,9 @@ By above calculation , not only would we be not able to complete this during a w
 
 ## Action
 
+Traditional Approach
 ![Traditional Approach](OldApproach.JPG)
+New Approach
 ![New Approach](NewApproach.JPG)
 
 Below were the steps we took to tackle above problems :-
